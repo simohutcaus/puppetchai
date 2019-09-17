@@ -9,6 +9,9 @@ const waitForText = require('../lib/helpers').waitForText
 const pressKey = require('../lib/helpers').pressKey
 const shouldExist = require('../lib/helpers').shouldExist
 const shouldNotExist = require('../lib/helpers').shouldNotExist
+const generateID = require('../lib/utils').generateID
+const generateEmail = require('../lib/utils').generateEmail
+const generateNumbers = require('../lib/utils').generateNumbers
 
 describe('My first pupeteer test', () => {
   let browser
@@ -77,7 +80,8 @@ describe('My first pupeteer test', () => {
   it('submit searchbox', async () => {
 
     await loadUrl(page, config.baseUrl)
-    await type(page, "javascript", "#nav-search")
+    await type(page, generateEmail(), "#nav-search")
+    await page.waitFor(3000)
     //await page.waitForSelector('#nav-search')
     //await page.type("#nav-search", "javascript")
     //await page.keyboard.press("Enter")
