@@ -19,7 +19,7 @@ describe('My first pupeteer test', () => {
 
   before(async function () {
     browser = await puppeteer.launch({
-      headless: config.headless,
+      headless: config.isHeadless,
       slowMo: config.slowMo,
       devTools: config.isDevTools,
       timeout: config.timeout
