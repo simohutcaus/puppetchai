@@ -113,6 +113,26 @@ describe('Second Test', () => {
     it('should display success message', async () => {
       await shouldExist(page, '#feedback-title')
       await waitForText(page, 'body', 'Thank you for your comments')
-    })
-  })
+		})
+		
+
+	})
+	
+	describe('Forgot password', () => {
+		it('should navigate to homepage', async () => {
+			await loadUrl(page, config2.baseUrl)
+			await shouldExist(page, '#online_banking_features')
+		})
+		
+		it('should load forgotten password form', async () => {
+			await loadUrl(page, "http://zero.webappsecurity.com/forgot-password.html")
+			await waitForText(page, 'h3', 'Forgotten Password')
+
+		})
+		it('should submit email', async () => {
+			await type(page, 'test@test.com', '#user_email')
+			await click(page, '.btn-primary')
+			await waitForText(page, 'body', 'Your password will be sent')
+		})
+	})
 })
