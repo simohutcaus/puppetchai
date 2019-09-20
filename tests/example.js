@@ -67,15 +67,7 @@ describe('My first pupeteer test', () => {
     expect(title).to.contains("Community")
   })
 
-  it('click method', async () => {
-    await loadUrl(page, config.baseUrl)
-    //await page.waitForSelector('#write-link')
-    //await page.click('#write-link')
-    await click(page, "#write-link")
-    //await page.waitForSelector('.registration-rainbow')
-    await shouldExist(page, '.registration-rainbow')
-
-  })
+  
 
   it('submit searchbox', async () => {
 
