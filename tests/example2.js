@@ -47,12 +47,23 @@ describe('Portal', () => {
 		it('should login', async () => {
 			await loadUrl(page, config2.baseUrl)
 			await type(page, 'USERNAME', '#username')
-			await type(page, 'PASSWORD', '#password')
+			await type(page, 'password', '#password')
 			await pressKey(page, 'Enter')
 			await waitForText(page, 'body', 'Account')
 			await shouldExist(page, '.panel-heading')
-			await click(page, '#SubsTile')
+			const newPagePromise = new Promise(x => browser.once('targetcreated', target => x(target.page())));
+await page.click('#SubsTile');
+const newPage = await newPagePromise;
+await newPage.waitForSelector('#mainContent');
+await newPage.click('body > div.nav-left-wrapper > nav > ul > li:nth-child(3) > span > span.nav-label')
+await newPage.click('body > div.nav-left-wrapper > nav > ul > li:nth-child(3) > ul > li:nth-child(2) > a')
+await newPage.waitForSelector('#k-tabstrip-wrapper')
+
+// handle Page 2: you can access new page DOM through newPage object
+			
 		})
+
+		
 
 		// it('should click on signin button', async () => {
 		// 	await click(page, '#signin_button')

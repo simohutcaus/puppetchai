@@ -5,9 +5,9 @@
     "passes": 4,
     "pending": 0,
     "failures": 1,
-    "start": "2019-09-20T13:07:09.150Z",
-    "end": "2019-09-20T13:07:36.001Z",
-    "duration": 26851,
+    "start": "2019-09-27T07:00:43.641Z",
+    "end": "2019-09-27T07:01:35.167Z",
+    "duration": 51526,
     "testsRegistered": 5,
     "passPercent": 80,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "5e83bd0a-870c-4c0d-b28e-00899e30dda6",
+      "uuid": "67f11ab5-4440-4a25-a77c-806dfac40bbb",
       "title": "",
       "fullFile": "",
       "file": "",
@@ -27,16 +27,16 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "be34abbe-8542-4851-9248-deeba5c8cc62",
+          "uuid": "0227768b-20de-4caa-88aa-f8aa76b178c7",
           "title": "My first pupeteer test",
-          "fullFile": "/Users/simonhutchinson/Documents/GitHub/puppetchai/tests/example.js",
-          "file": "/tests/example.js",
+          "fullFile": "C:\\autotest\\tests\\example.js",
+          "file": "\\tests\\example.js",
           "beforeHooks": [
             {
               "title": "\"before all\" hook",
               "fullTitle": "My first pupeteer test \"before all\" hook",
               "timedOut": false,
-              "duration": 748,
+              "duration": 935,
               "state": null,
               "speed": null,
               "pass": false,
@@ -45,8 +45,8 @@
               "context": null,
               "code": "browser = await puppeteer.launch({\n  headless: config.isHeadless,\n  slowMo: config.slowMo,\n  devTools: config.isDevTools,\n  timeout: config.timeout\n})\npage = await browser.newPage()\nawait page.setDefaultTimeout(config.waitingTimeout)\nawait page.setViewport({\n  width: config.viewportWidth,\n  height: config.viewportHeight\n})",
               "err": {},
-              "uuid": "5be515b6-d37d-418a-a746-46e402b5152a",
-              "parentUUID": "be34abbe-8542-4851-9248-deeba5c8cc62",
+              "uuid": "ff951e34-03d7-4c10-8956-2ea850a30495",
+              "parentUUID": "0227768b-20de-4caa-88aa-f8aa76b178c7",
               "isHook": true,
               "skipped": false
             }
@@ -56,7 +56,7 @@
               "title": "\"after all\" hook",
               "fullTitle": "My first pupeteer test \"after all\" hook",
               "timedOut": false,
-              "duration": 92,
+              "duration": 1223,
               "state": null,
               "speed": null,
               "pass": false,
@@ -65,8 +65,8 @@
               "context": null,
               "code": "await browser.close()",
               "err": {},
-              "uuid": "8e384e10-06a8-4620-b478-f6eecea800c6",
-              "parentUUID": "be34abbe-8542-4851-9248-deeba5c8cc62",
+              "uuid": "2112a9fe-4b7b-4d0e-88d6-8b9fed985016",
+              "parentUUID": "0227768b-20de-4caa-88aa-f8aa76b178c7",
               "isHook": true,
               "skipped": false
             }
@@ -76,7 +76,7 @@
               "title": "my first test step",
               "fullTitle": "My first pupeteer test my first test step",
               "timedOut": false,
-              "duration": 3187,
+              "duration": 2787,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -85,8 +85,8 @@
               "context": null,
               "code": "await loadUrl(page, config.baseUrl)\n//await page.goto(config.baseUrl)\n//await page.waitForSelector('#nav-search')\nawait shouldExist(page, '#nav-search')\nawait waitForText(page, 'body', 'WRITE A POST')\nconst url = await page.url()\nconst title = await page.title()\nexpect(url).to.contain(\"dev\")\nexpect(title).to.contains(\"Community\")",
               "err": {},
-              "uuid": "8540360d-eb66-4330-bdd1-aeaa5aa66c10",
-              "parentUUID": "be34abbe-8542-4851-9248-deeba5c8cc62",
+              "uuid": "66c4145b-3d27-4cc6-8971-07480ee327fb",
+              "parentUUID": "0227768b-20de-4caa-88aa-f8aa76b178c7",
               "isHook": false,
               "skipped": false
             },
@@ -94,7 +94,7 @@
               "title": "browser reload",
               "fullTitle": "My first pupeteer test browser reload",
               "timedOut": false,
-              "duration": 709,
+              "duration": 3318,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -103,8 +103,8 @@
               "context": null,
               "code": "await page.reload()\n//await page.waitForSelector('#page-content')\nawait shouldExist(page, '#page-content')\nconst url = await page.url()\nconst title = await page.title()\n\nexpect(url).to.contain(\"dev\")\nexpect(title).to.contains(\"Community\")",
               "err": {},
-              "uuid": "c8dac84c-58ec-4520-978b-c3003951dd26",
-              "parentUUID": "be34abbe-8542-4851-9248-deeba5c8cc62",
+              "uuid": "4a61e45a-5a13-4d5a-ad9b-24e8769752eb",
+              "parentUUID": "0227768b-20de-4caa-88aa-f8aa76b178c7",
               "isHook": false,
               "skipped": false
             },
@@ -112,7 +112,7 @@
               "title": "submit searchbox",
               "fullTitle": "My first pupeteer test submit searchbox",
               "timedOut": false,
-              "duration": 4946,
+              "duration": 5341,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -121,37 +121,37 @@
               "context": null,
               "code": "await loadUrl(page, config.baseUrl)\n    await type(page, generateEmail(), \"#nav-search\")\n    await page.waitFor(3000)\n    //await page.waitForSelector('#nav-search')\n    //await page.type(\"#nav-search\", \"javascript\")\n    //await page.keyboard.press(\"Enter\")\n    await pressKey(page, 'Enter')\n    //await page.waitForSelector('#articles-list')\n    await shouldExist(page, '#articles-list')",
               "err": {},
-              "uuid": "7c9db777-26dd-4eeb-9864-7c6b77b3b185",
-              "parentUUID": "be34abbe-8542-4851-9248-deeba5c8cc62",
+              "uuid": "242cb955-6a84-4af0-a2e6-98b67a911544",
+              "parentUUID": "0227768b-20de-4caa-88aa-f8aa76b178c7",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "8540360d-eb66-4330-bdd1-aeaa5aa66c10",
-            "c8dac84c-58ec-4520-978b-c3003951dd26",
-            "7c9db777-26dd-4eeb-9864-7c6b77b3b185"
+            "66c4145b-3d27-4cc6-8971-07480ee327fb",
+            "4a61e45a-5a13-4d5a-ad9b-24e8769752eb",
+            "242cb955-6a84-4af0-a2e6-98b67a911544"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 8842,
+          "duration": 11446,
           "root": false,
           "rootEmpty": false,
           "_timeout": 30000
         },
         {
-          "uuid": "3554c8e1-133b-4a3c-89b9-2844800f0ec3",
+          "uuid": "99d49451-5f17-4172-92d6-f9e5d2ae38ec",
           "title": "Portal",
-          "fullFile": "/Users/simonhutchinson/Documents/GitHub/puppetchai/tests/example2.js",
-          "file": "/tests/example2.js",
+          "fullFile": "C:\\autotest\\tests\\example2.js",
+          "file": "\\tests\\example2.js",
           "beforeHooks": [
             {
               "title": "\"before all\" hook",
               "fullTitle": "Portal \"before all\" hook",
               "timedOut": false,
-              "duration": 1171,
+              "duration": 1990,
               "state": null,
               "speed": null,
               "pass": false,
@@ -160,8 +160,8 @@
               "context": null,
               "code": "browser = await puppeteer.launch({\n\theadless: false,\n\tslowMo: config2.slowMo,\n\tdevTools: config2.isDevTools,\n\ttimeout: config2.timeout,\n})\npage = await browser.newPage()\nawait page.setDefaultTimeout(config2.waitingTimeout)\nawait page.setViewport({\n\twidth: config2.viewportWidth,\n\theight: config2.viewportHeight,\n})",
               "err": {},
-              "uuid": "cd1b47d1-b79f-46bc-bb36-67d3ffbadbd3",
-              "parentUUID": "3554c8e1-133b-4a3c-89b9-2844800f0ec3",
+              "uuid": "37af8073-af11-46dc-b9e4-f9e2aa22bcc2",
+              "parentUUID": "99d49451-5f17-4172-92d6-f9e5d2ae38ec",
               "isHook": true,
               "skipped": false
             }
@@ -171,7 +171,7 @@
               "title": "\"after all\" hook",
               "fullTitle": "Portal \"after all\" hook",
               "timedOut": false,
-              "duration": 0,
+              "duration": 1,
               "state": null,
               "speed": null,
               "pass": false,
@@ -180,8 +180,8 @@
               "context": null,
               "code": "console.log('done')",
               "err": {},
-              "uuid": "964828af-9454-40b3-b9eb-5cde90ddf6a5",
-              "parentUUID": "3554c8e1-133b-4a3c-89b9-2844800f0ec3",
+              "uuid": "af4bd23a-87d6-434b-81a8-b3ab61a84100",
+              "parentUUID": "99d49451-5f17-4172-92d6-f9e5d2ae38ec",
               "isHook": true,
               "skipped": false
             }
@@ -189,10 +189,10 @@
           "tests": [],
           "suites": [
             {
-              "uuid": "2c317aef-cbf7-42dc-9d68-d52bf10da60d",
+              "uuid": "e7bb0678-9ec8-47c0-9cec-abd62102e487",
               "title": "Login Test",
-              "fullFile": "/Users/simonhutchinson/Documents/GitHub/puppetchai/tests/example2.js",
-              "file": "/tests/example2.js",
+              "fullFile": "C:\\autotest\\tests\\example2.js",
+              "file": "\\tests\\example2.js",
               "beforeHooks": [],
               "afterHooks": [],
               "tests": [
@@ -200,7 +200,7 @@
                   "title": "should navigate to homepage",
                   "fullTitle": "Portal Login Test should navigate to homepage",
                   "timedOut": false,
-                  "duration": 5626,
+                  "duration": 5885,
                   "state": "passed",
                   "speed": "slow",
                   "pass": true,
@@ -209,44 +209,44 @@
                   "context": null,
                   "code": "await loadUrl(page, config2.baseUrl)\nawait shouldExist(page, '#username')",
                   "err": {},
-                  "uuid": "ff6fb3f1-71f3-4cec-b2a9-97bd471daf91",
-                  "parentUUID": "2c317aef-cbf7-42dc-9d68-d52bf10da60d",
+                  "uuid": "9726047b-2a13-46ec-9fdd-afba01156058",
+                  "parentUUID": "e7bb0678-9ec8-47c0-9cec-abd62102e487",
                   "isHook": false,
                   "skipped": false
                 },
                 {
                   "title": "should login",
                   "fullTitle": "Portal Login Test should login",
-                  "timedOut": false,
-                  "duration": 10358,
+                  "timedOut": true,
+                  "duration": 30000,
                   "state": "failed",
                   "speed": null,
                   "pass": false,
                   "fail": true,
                   "pending": false,
                   "context": null,
-                  "code": "await loadUrl(page, config2.baseUrl)\nawait type(page, 'USERNAME', '#username')\nawait type(page, 'PASSWORD', '#password')\nawait pressKey(page, 'Enter')\nawait waitForText(page, 'body', 'Account')\nawait shouldExist(page, '.panel-heading')\nawait click(page, '#SubsTile')",
+                  "code": "await loadUrl(page, config2.baseUrl)\nawait type(page, 'stp@mailinator.com', '#username')\nawait type(page, 'password', '#password')\nawait pressKey(page, 'Enter')\nawait waitForText(page, 'body', 'Account')\nawait shouldExist(page, '.panel-heading')\nconst newPagePromise = new Promise(x => browser.once('targetcreated', target => x(target.page())));\nawait page.click('#SubsTile');\nconst newPage = await newPagePromise;\nawait newPage.waitForSelector('#mainContent');\nawait newPage.click('body > div.nav-left-wrapper > nav > ul > li:nth-child(3) > span > span.nav-label')\nawait newPage.click('body > div.nav-left-wrapper > nav > ul > li:nth-child(3) > ul > li:nth-child(2) > a')\nawait newPage.waitForSelector('#k-tabstrip-wrapper')\nawait newPage.click('#tsContact > ul > li:nth-child(2) > a')\n// handle Page 2: you can access new page DOM through newPage object",
                   "err": {
-                    "message": "Error: Selector: .panel-heading not found",
-                    "estack": "Error: Selector: .panel-heading not found\n    at shouldExist (lib/helpers.js:78:13)\n    at process._tickCallback (internal/process/next_tick.js:68:7)",
+                    "message": "Error: Timeout of 30000ms exceeded. For async tests and hooks, ensure \"done()\" is called; if returning a Promise, ensure it resolves. (C:\\autotest\\tests\\example2.js)",
+                    "estack": "Error: Timeout of 30000ms exceeded. For async tests and hooks, ensure \"done()\" is called; if returning a Promise, ensure it resolves. (C:\\autotest\\tests\\example2.js)",
                     "diff": null
                   },
-                  "uuid": "ec66755f-0671-4968-b126-5b8318010cbc",
-                  "parentUUID": "2c317aef-cbf7-42dc-9d68-d52bf10da60d",
+                  "uuid": "7dd9ba3f-40fc-449a-9eba-1ddad0c29c99",
+                  "parentUUID": "e7bb0678-9ec8-47c0-9cec-abd62102e487",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "ff6fb3f1-71f3-4cec-b2a9-97bd471daf91"
+                "9726047b-2a13-46ec-9fdd-afba01156058"
               ],
               "failures": [
-                "ec66755f-0671-4968-b126-5b8318010cbc"
+                "7dd9ba3f-40fc-449a-9eba-1ddad0c29c99"
               ],
               "pending": [],
               "skipped": [],
-              "duration": 15984,
+              "duration": 35885,
               "root": false,
               "rootEmpty": false,
               "_timeout": 30000
