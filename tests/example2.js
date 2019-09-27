@@ -46,7 +46,7 @@ describe('Portal', () => {
 
 		it('should login', async () => {
 			await loadUrl(page, config2.baseUrl)
-			await type(page, 'USERNAME', '#username')
+			await type(page, 'username', '#username')
 			await type(page, 'password', '#password')
 			await pressKey(page, 'Enter')
 			await waitForText(page, 'body', 'Account')
@@ -57,7 +57,11 @@ const newPage = await newPagePromise;
 await newPage.waitForSelector('#mainContent');
 await newPage.click('body > div.nav-left-wrapper > nav > ul > li:nth-child(3) > span > span.nav-label')
 await newPage.click('body > div.nav-left-wrapper > nav > ul > li:nth-child(3) > ul > li:nth-child(2) > a')
-await newPage.waitForSelector('#k-tabstrip-wrapper')
+await newPage.waitForSelector('.employee-index')	
+await newPage.waitForSelector('#show-hide-grdContactActive')
+await newPage.click('.button.-primary.-prominent')
+await newPage.waitForSelector('#FirstName')
+await type(newPage, 'Simon', '#FirstName')
 
 // handle Page 2: you can access new page DOM through newPage object
 			

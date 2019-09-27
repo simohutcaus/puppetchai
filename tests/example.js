@@ -1,4 +1,4 @@
-const puppeteer = require('puppeteer');
+/* const puppeteer = require('puppeteer');
 const expect = require('chai').expect;
 const config = require('../lib/config');
 const click = require('../lib/helpers').click
@@ -82,4 +82,4 @@ describe('My first pupeteer test', () => {
     await shouldExist(page, '#articles-list')
   })
 
-})
+}) */
