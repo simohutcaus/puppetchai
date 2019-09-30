@@ -14,6 +14,10 @@ const generateEmail = require('../lib/utils').generateEmail
 const generateNumbers = require('../lib/utils').generateNumbers
 const getCount = require('../lib/helpers').getCount
 
+//'PageUp': {'keyCode': 33, 'code': 'PageUp', 'key': 'PageUp'},
+// page.keyboard.press('PageUp')
+
+
 describe('Portal', () => {
 	let browser
 	let page
@@ -28,8 +32,8 @@ describe('Portal', () => {
 		page = await browser.newPage()
 		await page.setDefaultTimeout(config2.waitingTimeout)
 		await page.setViewport({
-			width: config2.viewportWidth,
-			height: config2.viewportHeight,
+			width: 1600,
+			height: 1200,
 		})
 	})
 
@@ -52,8 +56,7 @@ describe('Portal', () => {
 		})
 
 		it('should login', async () => {
-			await loadUrl(page, config2.baseUrl)
-			await type(page, 'username', '#username')
+			await type(page, 'stp@mailinator.com', '#username')
 			await type(page, 'password', '#password')
 			await pressKey(page, 'Enter')
 			await waitForText(page, 'body', 'Account')
@@ -96,11 +99,24 @@ await newPage.waitForSelector('#btnSaveClose')
 			await newPage.click('#mainContent > div.row.js-nav-page > div > div > ul > li:nth-child(3) > a')
 			await delay(4000)
 			await newPage.waitForSelector('#btnRightkendoDialog.button.-primary.k-button')
-			await newPage.click('button#btnLeftkendoDialog.button.-tertiary.k-button.cancel')
+			await newPage.click('button#btnLeftkendoDialog.button.-tertiary.k-button.cancel')	
+		})
 
+		it('It should fill out the employment tab', async () => {
 
-			
-			
+			await newPage.waitForSelector('#EmployeeNumber')
+			await type(newPage, '1234', '#EmployeeNumber')
+			await type(newPage, '40', '#WeeklyHours')
+			await type(newPage, 'Product Manager', '#JobTitle')
+			await delay(4000)
+			await newPage.click('#mainContent > div > div > div > ul > li:nth-child(4) > a')
+			await delay(4000)
+			await newPage.waitForSelector('#btnRightkendoDialog.button.-primary.k-button')
+			await newPage.click('button#btnLeftkendoDialog.button.-tertiary.k-button.cancel')	
+			await newPage.waitForSelector('#ProjectedDate')
+			//await newPage.click('#grdLeaves > div.k-header.k-grid-toolbar.k-grid-top > a')
+			//await delay(4000)
+
 		})
 
 		
