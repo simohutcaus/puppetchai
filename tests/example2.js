@@ -61,7 +61,11 @@ await newPage.waitForSelector('.employee-index')
 await newPage.waitForSelector('#show-hide-grdContactActive')
 await newPage.click('.button.-primary.-prominent')
 await newPage.waitForSelector('#FirstName')
-await type(newPage, 'Simon', '#FirstName')
+await type(newPage, `Simon ${Date.now()}`, '#FirstName')
+await type(newPage, `test ${Date.now()}`, '#Surname')
+await newPage.click('#btnSave')
+
+
 
 // handle Page 2: you can access new page DOM through newPage object
 			
