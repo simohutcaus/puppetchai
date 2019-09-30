@@ -38,6 +38,13 @@ describe('Portal', () => {
 	})
 
 
+	function delay(time) {
+		return new Promise(function(resolve) { 
+				setTimeout(resolve, time)
+		});
+ }
+
+
 	describe('Login Test', () => {
 		it('should navigate to homepage', async () => {
 			await loadUrl(page, config2.baseUrl)
@@ -53,7 +60,7 @@ describe('Portal', () => {
 			await shouldExist(page, '.panel-heading')
 			const newPagePromise = new Promise(x => browser.once('targetcreated', target => x(target.page())));
 await page.click('#SubsTile');
-const newPage = await newPagePromise;
+newPage = await newPagePromise;
 await newPage.waitForSelector('#mainContent');
 await newPage.click('body > div.nav-left-wrapper > nav > ul > li:nth-child(3) > span > span.nav-label')
 await newPage.click('body > div.nav-left-wrapper > nav > ul > li:nth-child(3) > ul > li:nth-child(2) > a')
@@ -63,11 +70,36 @@ await newPage.click('.button.-primary.-prominent')
 await newPage.waitForSelector('#FirstName')
 await type(newPage, `Simon ${Date.now()}`, '#FirstName')
 await type(newPage, `test ${Date.now()}`, '#Surname')
+await type(newPage, 'Line1', '#PostalAddress_Line1')
+await type(newPage, 'Line2', '#PostalAddress_Line2')
+await type(newPage, 'Sydney', '#PostalAddress_Suburb')
+await type(newPage, '2060', '#PostalAddress_PostCode')
+await type(newPage, 'test@test.com', '#EmailAddress')
 await newPage.click('#btnSave')
+await newPage.waitForSelector('#btnSaveClose')
+
 
 
 
 // handle Page 2: you can access new page DOM through newPage object
+			
+		})
+
+		it('It should navigate to personal tab of new employee', async () => {
+			
+			await newPage.waitForSelector('#mainContent')
+			await delay(4000)
+			await newPage.waitForSelector('#mainContent > div.row.js-nav-page > div > div > ul > li:nth-child(2) > a')
+			await newPage.click('#mainContent > div.row.js-nav-page > div > div > ul > li:nth-child(2) > a')
+			await newPage.waitForSelector('#DateOfBirth')
+			await type(newPage, '1234', '#PdfPassword')
+			await newPage.click('#mainContent > div.row.js-nav-page > div > div > ul > li:nth-child(3) > a')
+			await delay(4000)
+			await newPage.waitForSelector('#btnRightkendoDialog.button.-primary.k-button')
+			await newPage.click('button#btnLeftkendoDialog.button.-tertiary.k-button.cancel')
+
+
+			
 			
 		})
 

@@ -1,14 +1,14 @@
 {
   "stats": {
     "suites": 2,
-    "tests": 2,
-    "passes": 2,
+    "tests": 3,
+    "passes": 3,
     "pending": 0,
     "failures": 0,
-    "start": "2019-09-30T01:20:27.269Z",
-    "end": "2019-09-30T01:20:47.517Z",
-    "duration": 20248,
-    "testsRegistered": 2,
+    "start": "2019-09-30T07:03:09.020Z",
+    "end": "2019-09-30T07:03:41.957Z",
+    "duration": 32937,
+    "testsRegistered": 3,
     "passPercent": 100,
     "pendingPercent": 0,
     "other": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "9c4d8301-90b4-4c57-b71d-33c232f549b4",
+      "uuid": "dbe434da-947a-41f6-9cd7-841ccccb996d",
       "title": "",
       "fullFile": "",
       "file": "",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "1e9146a3-5acb-4c45-89cc-1ff01513576b",
+          "uuid": "6454986a-4e11-439c-b200-f2f6bfebfb52",
           "title": "Portal",
           "fullFile": "C:\\autotest\\tests\\example2.js",
           "file": "\\tests\\example2.js",
@@ -36,7 +36,7 @@
               "title": "\"before all\" hook",
               "fullTitle": "Portal \"before all\" hook",
               "timedOut": false,
-              "duration": 1386,
+              "duration": 1639,
               "state": null,
               "speed": null,
               "pass": false,
@@ -45,8 +45,8 @@
               "context": null,
               "code": "browser = await puppeteer.launch({\n\theadless: false,\n\tslowMo: config2.slowMo,\n\tdevTools: config2.isDevTools,\n\ttimeout: config2.timeout,\n})\npage = await browser.newPage()\nawait page.setDefaultTimeout(config2.waitingTimeout)\nawait page.setViewport({\n\twidth: config2.viewportWidth,\n\theight: config2.viewportHeight,\n})",
               "err": {},
-              "uuid": "05350d55-d6fc-4502-a1c5-7bc14c957d9e",
-              "parentUUID": "1e9146a3-5acb-4c45-89cc-1ff01513576b",
+              "uuid": "1c5b11c5-8d35-44ab-a63e-9502e6b6b9e0",
+              "parentUUID": "6454986a-4e11-439c-b200-f2f6bfebfb52",
               "isHook": true,
               "skipped": false
             }
@@ -65,8 +65,8 @@
               "context": null,
               "code": "console.log('done')",
               "err": {},
-              "uuid": "b32ae61e-a812-4e33-98d7-3c68d938a980",
-              "parentUUID": "1e9146a3-5acb-4c45-89cc-1ff01513576b",
+              "uuid": "b838a7e9-24e4-45b9-b020-9f00bdccb1db",
+              "parentUUID": "6454986a-4e11-439c-b200-f2f6bfebfb52",
               "isHook": true,
               "skipped": false
             }
@@ -74,7 +74,7 @@
           "tests": [],
           "suites": [
             {
-              "uuid": "1099710c-cb2d-4e3f-80fd-ef12c20e9645",
+              "uuid": "3ee60963-89cd-493d-872d-3c5ab462679b",
               "title": "Login Test",
               "fullFile": "C:\\autotest\\tests\\example2.js",
               "file": "\\tests\\example2.js",
@@ -85,7 +85,7 @@
                   "title": "should navigate to homepage",
                   "fullTitle": "Portal Login Test should navigate to homepage",
                   "timedOut": false,
-                  "duration": 4274,
+                  "duration": 5657,
                   "state": "passed",
                   "speed": "slow",
                   "pass": true,
@@ -94,8 +94,8 @@
                   "context": null,
                   "code": "await loadUrl(page, config2.baseUrl)\nawait shouldExist(page, '#username')",
                   "err": {},
-                  "uuid": "c174099e-b596-4238-89d5-058f8bdf22dc",
-                  "parentUUID": "1099710c-cb2d-4e3f-80fd-ef12c20e9645",
+                  "uuid": "62189030-f8d3-4f05-b1fc-f3feea1bcb52",
+                  "parentUUID": "3ee60963-89cd-493d-872d-3c5ab462679b",
                   "isHook": false,
                   "skipped": false
                 },
@@ -103,30 +103,49 @@
                   "title": "should login",
                   "fullTitle": "Portal Login Test should login",
                   "timedOut": false,
-                  "duration": 14565,
+                  "duration": 14838,
                   "state": "passed",
                   "speed": "slow",
                   "pass": true,
                   "fail": false,
                   "pending": false,
                   "context": null,
-                  "code": "await loadUrl(page, config2.baseUrl)\nawait type(page, 'stp@mailinator.com', '#username')\nawait type(page, 'password', '#password')\nawait pressKey(page, 'Enter')\nawait waitForText(page, 'body', 'Account')\nawait shouldExist(page, '.panel-heading')\nconst newPagePromise = new Promise(x => browser.once('targetcreated', target => x(target.page())));\nawait page.click('#SubsTile');\nconst newPage = await newPagePromise;\nawait newPage.waitForSelector('#mainContent');\nawait newPage.click('body > div.nav-left-wrapper > nav > ul > li:nth-child(3) > span > span.nav-label')\nawait newPage.click('body > div.nav-left-wrapper > nav > ul > li:nth-child(3) > ul > li:nth-child(2) > a')\nawait newPage.waitForSelector('.employee-index')\t\nawait newPage.waitForSelector('#show-hide-grdContactActive')\nawait newPage.click('.button.-primary.-prominent')\nawait newPage.waitForSelector('#FirstName')\nawait type(newPage, `Simon ${Date.now()}`, '#FirstName')\nawait type(newPage, `test ${Date.now()}`, '#Surname')\nawait newPage.click('#btnSave')\n\n\n\n// handle Page 2: you can access new page DOM through newPage object",
+                  "code": "await loadUrl(page, config2.baseUrl)\nawait type(page, 'stp@mailinator.com', '#username')\nawait type(page, 'password', '#password')\nawait pressKey(page, 'Enter')\nawait waitForText(page, 'body', 'Account')\nawait shouldExist(page, '.panel-heading')\nconst newPagePromise = new Promise(x => browser.once('targetcreated', target => x(target.page())));\nawait page.click('#SubsTile');\nnewPage = await newPagePromise;\nawait newPage.waitForSelector('#mainContent');\nawait newPage.click('body > div.nav-left-wrapper > nav > ul > li:nth-child(3) > span > span.nav-label')\nawait newPage.click('body > div.nav-left-wrapper > nav > ul > li:nth-child(3) > ul > li:nth-child(2) > a')\nawait newPage.waitForSelector('.employee-index')\t\nawait newPage.waitForSelector('#show-hide-grdContactActive')\nawait newPage.click('.button.-primary.-prominent')\nawait newPage.waitForSelector('#FirstName')\nawait type(newPage, `Simon ${Date.now()}`, '#FirstName')\nawait type(newPage, `test ${Date.now()}`, '#Surname')\nawait type(newPage, 'Line1', '#PostalAddress_Line1')\nawait type(newPage, 'Line2', '#PostalAddress_Line2')\nawait type(newPage, 'Sydney', '#PostalAddress_Suburb')\nawait type(newPage, '2060', '#PostalAddress_PostCode')\nawait type(newPage, 'test@test.com', '#EmailAddress')\nawait newPage.click('#btnSave')\nawait newPage.waitForSelector('#btnSaveClose')\n\n\n\n\n// handle Page 2: you can access new page DOM through newPage object",
                   "err": {},
-                  "uuid": "4fb7754f-0581-49fe-a731-a3bb05009723",
-                  "parentUUID": "1099710c-cb2d-4e3f-80fd-ef12c20e9645",
+                  "uuid": "abd3c581-c659-452f-83c2-9872f4f5063f",
+                  "parentUUID": "3ee60963-89cd-493d-872d-3c5ab462679b",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "It should navigate to personal tab of new employee",
+                  "fullTitle": "Portal Login Test It should navigate to personal tab of new employee",
+                  "timedOut": false,
+                  "duration": 10774,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "await newPage.waitForSelector('#mainContent')\nawait delay(4000)\nawait newPage.waitForSelector('#mainContent > div.row.js-nav-page > div > div > ul > li:nth-child(2) > a')\nawait newPage.click('#mainContent > div.row.js-nav-page > div > div > ul > li:nth-child(2) > a')\nawait newPage.waitForSelector('#DateOfBirth')\nawait type(newPage, '1234', '#PdfPassword')\nawait newPage.click('#mainContent > div.row.js-nav-page > div > div > ul > li:nth-child(2) > a')\nawait delay(4000)\nawait newPage.waitForSelector('#btnRightkendoDialog.button.-primary.k-button')\nawait newPage.click('button#btnLeftkendoDialog.button.-tertiary.k-button.cancel')",
+                  "err": {},
+                  "uuid": "48dd5820-550d-474c-b663-361da05cfa55",
+                  "parentUUID": "3ee60963-89cd-493d-872d-3c5ab462679b",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "c174099e-b596-4238-89d5-058f8bdf22dc",
-                "4fb7754f-0581-49fe-a731-a3bb05009723"
+                "62189030-f8d3-4f05-b1fc-f3feea1bcb52",
+                "abd3c581-c659-452f-83c2-9872f4f5063f",
+                "48dd5820-550d-474c-b663-361da05cfa55"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 18839,
+              "duration": 31269,
               "root": false,
               "rootEmpty": false,
               "_timeout": 30000
