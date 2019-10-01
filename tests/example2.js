@@ -26,7 +26,8 @@ describe('Reckon One Payroll', () => {
 	before(async function() {
 		browser = await puppeteer.launch({
 			defaultViewport: null,
-			headless: true,
+			executablePath: 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe ',
+			headless: false,
 			slowMo: config2.slowMo,
 			devTools: config2.isDevTools,
 			timeout: config2.timeout,
@@ -51,7 +52,7 @@ describe('Reckon One Payroll', () => {
  }
 
 
-	describe('Login Test', () => {
+	describe('Add Employee Test', () => {
 		it('should navigate to homepage', async () => {
 			await loadUrl(page, config2.baseUrl)
 			await shouldExist(page, '#username')
@@ -107,11 +108,18 @@ await newPage.waitForSelector('#btnSaveClose')
 		it('It should fill out the employment tab', async () => {
 
 			await newPage.waitForSelector('#EmployeeNumber')
+			await type(newPage, 'Product Manager', '#JobTitle')
+			//await type('input[name=WeeklyHours]', '40', {delay: 20})
 			await type(newPage, '1234', '#EmployeeNumber')
 			await delay(2000)
 			await type(newPage, '40', '#WeeklyHours')
-			await type(newPage, 'Product Manager', '#JobTitle')
-			await delay(4000)
+			//await newPage.keyboard.press('Tab')
+			//await newPage.keyboard.press('Tab')
+			//await newPage.keyboard.press('Tab')
+			//await newPage.keyboard.press('Tab')
+			//await newPage.keyboard.press('Tab')
+			//await newPage.keyboard.press('4')
+			//await newPage.keyboard.press('0')
 			await newPage.click('#mainContent > div > div > div > ul > li:nth-child(4) > a')
 			await delay(4000)
 			await newPage.waitForSelector('#btnRightkendoDialog.button.-primary.k-button')
@@ -129,7 +137,7 @@ await newPage.waitForSelector('#btnSaveClose')
 		it('It should fill out the tax tab', async () => {
 			await newPage.click('#IsHelp')
 			await type(newPage, 'New South Wales', '#EmployeeTax > section:nth-child(11) > ul > li:nth-child(2) > span.span-3.-last > span > span > input')
-			await type(newPage, '1111111111', '#TaxFileNumber')
+			await type(newPage, '11111111111', '#TaxFileNumber')
 			await type(newPage, 'Scale 2: Tax free threshold claimed', '#EmployeeTax > section:nth-child(11) > ul > li:nth-child(4) > span.span-4.-last > span.k-widget.k-combobox.k-header.js-mode-edit.span-3 > span > input')
 			await newPage.keyboard.press('Tab')
 			await delay(2000)
@@ -156,12 +164,33 @@ await newPage.waitForSelector('#btnSaveClose')
 			await delay(4000)
 			await newPage.waitForSelector('#btnRightkendoDialog.button.-primary.k-button')
 			await newPage.click('button#btnRightkendoDialog.button.-primary.k-button')
+			
 
 
 		})
 
 		it('should fill out the pay setup tab', async () => {
 			await newPage.waitForSelector('#IsSsReduceEmployerSuperContribution')
+			await newPage.click('#grdEarnings > div > a')
+			await delay(1000)
+			await newPage.type('input[name=PayItem_input', 'Ordinary', {delay: 20})
+			await delay(4000)
+			await newPage.waitForSelector('#Quantity')
+			await newPage.waitForSelector('#Rate')
+			await newPage.keyboard.press('Tab')
+			await type(newPage, '40', '#Rate' )
+			await newPage.keyboard.press('Enter')
+			
+			
+			//await newPage.type(newPage, '40', '#Quantity')
+			//await newPage.keyboard.press('Tab')
+
+
+
+		})
+
+		it('should save and close the profile, saving the employee', async () => {
+			await newPage.click('#btnSaveClose')
 		})
 
 
