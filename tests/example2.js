@@ -16,15 +16,17 @@ const getCount = require('../lib/helpers').getCount
 
 //'PageUp': {'keyCode': 33, 'code': 'PageUp', 'key': 'PageUp'},
 // page.keyboard.press('PageUp')
+//await page.type('input[name=pickupAgingComment]', 'test comment', {delay: 20})
 
 
-describe('Portal', () => {
+describe('Reckon One Payroll', () => {
 	let browser
 	let page
 
 	before(async function() {
 		browser = await puppeteer.launch({
-			headless: false,
+			defaultViewport: null,
+			headless: true,
 			slowMo: config2.slowMo,
 			devTools: config2.isDevTools,
 			timeout: config2.timeout,
@@ -56,7 +58,7 @@ describe('Portal', () => {
 		})
 
 		it('should login', async () => {
-			await type(page, 'username', '#username')
+			await type(page, 'stp@mailinator.com', '#username')
 			await type(page, 'password', '#password')
 			await pressKey(page, 'Enter')
 			await waitForText(page, 'body', 'Account')
@@ -98,7 +100,7 @@ await newPage.waitForSelector('#btnSaveClose')
 			await type(newPage, '1234', '#PdfPassword')
 			await newPage.click('#mainContent > div.row.js-nav-page > div > div > ul > li:nth-child(3) > a')
 			await delay(4000)
-			await newPage.waitForSelector('#btnRightkendoDialog.button.-primary.k-button')
+			await newPage.waitForSelector('button#btnRightkendoDialog.button.-primary.k-button')
 			await newPage.click('button#btnLeftkendoDialog.button.-tertiary.k-button.cancel')	
 		})
 
@@ -106,18 +108,63 @@ await newPage.waitForSelector('#btnSaveClose')
 
 			await newPage.waitForSelector('#EmployeeNumber')
 			await type(newPage, '1234', '#EmployeeNumber')
+			await delay(2000)
 			await type(newPage, '40', '#WeeklyHours')
 			await type(newPage, 'Product Manager', '#JobTitle')
 			await delay(4000)
 			await newPage.click('#mainContent > div > div > div > ul > li:nth-child(4) > a')
 			await delay(4000)
 			await newPage.waitForSelector('#btnRightkendoDialog.button.-primary.k-button')
-			await newPage.click('button#btnLeftkendoDialog.button.-tertiary.k-button.cancel')	
-			await newPage.waitForSelector('#ProjectedDate')
+			await newPage.click('button#btnRightkendoDialog.button.-primary.k-button')	
+			await newPage.waitForSelector('#TaxFileNumber')
+			await delay(2000)
+			await newPage.waitForSelector('#EmployeeTax > section:nth-child(11) > ul > li:nth-child(2) > span.span-3.-last > span > span > input')
+			await delay(2000)
+			
 			//await newPage.click('#grdLeaves > div.k-header.k-grid-toolbar.k-grid-top > a')
 			//await delay(4000)
 
 		})
+
+		it('It should fill out the tax tab', async () => {
+			await newPage.click('#IsHelp')
+			await type(newPage, 'New South Wales', '#EmployeeTax > section:nth-child(11) > ul > li:nth-child(2) > span.span-3.-last > span > span > input')
+			await type(newPage, '1111111111', '#TaxFileNumber')
+			await type(newPage, 'Scale 2: Tax free threshold claimed', '#EmployeeTax > section:nth-child(11) > ul > li:nth-child(4) > span.span-4.-last > span.k-widget.k-combobox.k-header.js-mode-edit.span-3 > span > input')
+			await newPage.keyboard.press('Tab')
+			await delay(2000)
+			await type(newPage, '1', '#TaxOffset')
+			await newPage.click('#mainContent > div > div > div > ul > li:nth-child(5) > a')
+			await delay(4000)
+			await newPage.waitForSelector('#btnRightkendoDialog.button.-primary.k-button')
+			await newPage.click('button#btnRightkendoDialog.button.-primary.k-button')
+		})
+
+		it('should fill out the leave tab', async () => {
+			await newPage.waitForSelector('#grdLeaves > div > a')
+			await newPage.click('#grdLeaves > div > a')
+			await delay(4000)
+			await newPage.type('input[name=PayItem_input', 'Annual leave', {delay: 20})
+			await delay(2000)
+			await newPage.keyboard.press('Tab')
+			await type(newPage, '152', '#AnnualEntitlement')
+			await delay(2000)
+			await newPage.keyboard.press('Tab')
+			await delay(2000)
+			await newPage.keyboard.press('Tab')
+			await newPage.click('#mainContent > div > div > div > ul > li:nth-child(6) > a')
+			await delay(4000)
+			await newPage.waitForSelector('#btnRightkendoDialog.button.-primary.k-button')
+			await newPage.click('button#btnRightkendoDialog.button.-primary.k-button')
+
+
+		})
+
+		it('should fill out the pay setup tab', async () => {
+			await newPage.waitForSelector('#IsSsReduceEmployerSuperContribution')
+		})
+
+
 
 		
 
