@@ -58,7 +58,7 @@ describe('Reckon One Payroll', () => {
 		})
 
 		it('should login', async () => {
-			await type(page, 'stp@mailinator.com', '#username')
+			await type(page, 'username', '#username')
 			await type(page, 'password', '#password')
 			await pressKey(page, 'Enter')
 			await waitForText(page, 'body', 'Account')
