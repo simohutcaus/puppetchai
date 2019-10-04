@@ -59,7 +59,7 @@ describe('Reckon One Payroll', () => {
 		})
 
 		it('should login', async () => {
-			await type(page, 'username', '#username')
+			await type(page, 'stp@mailinator.com', '#username')
 			await type(page, 'password', '#password')
 			await pressKey(page, 'Enter')
 			await waitForText(page, 'body', 'Account')
@@ -68,11 +68,14 @@ describe('Reckon One Payroll', () => {
 await page.click('#SubsTile');
 newPage = await newPagePromise;
 await newPage.waitForSelector('#mainContent');
-await newPage.click('body > div.nav-left-wrapper > nav > ul > li:nth-child(3) > span > span.nav-label')
+const payrollSideLink = await newPage.$x("//span[text()='Payroll']")
+			await payrollSideLink[0].click()
 //const payrollSideBar = await newPage.$x("//span[text()='Payroll']");
 //console.log('tested ' + payrollTest[0]);
 //await payrollSideBar[0].click()
-await newPage.click('body > div.nav-left-wrapper > nav > ul > li:nth-child(3) > ul > li:nth-child(2) > a')
+//await newPage.click('body > div.nav-left-wrapper > nav > ul > li:nth-child(3) > ul > li:nth-child(2) > a')
+const employeeSideLink = await newPage.$x("//a[text()='Employees']")
+await employeeSideLink[0].click()
 await newPage.waitForSelector('.employee-index')	
 await newPage.waitForSelector('#show-hide-grdContactActive')
 await newPage.click('.button.-primary.-prominent')
@@ -206,94 +209,6 @@ await newPage.waitForSelector('#btnSaveClose')
 
 		
 
-		// it('should click on signin button', async () => {
-		// 	await click(page, '#signin_button')
-		// 	await shouldExist(page, LOGIN_FORM)
-		// })
 
-		// it('should submit login form', async () => {
-		// 	await type(page, generateID(), '#user_login')
-		// 	await type(page, generateID(), '#user_password')
-		// 	await click(page, '.btn-primary')
-		// })
-		// it('should get error message', async () => {
-		// 	await waitForText(page, 'body', 'Login and/or password are wrong')
-		// 	await shouldExist(page, LOGIN_FORM)
-		// })
-	})
-
-// 	describe('Search Test', () => {
-// 		it('should navigate to home page', async () => {
-// 			await loadUrl(page, config2.baseUrl)
-// 			await shouldExist(page, '#online_banking_features')
-// 		})
-
-// 		it('should submit search phrase', async () => {
-// 			await type(page, 'hello world', '#searchTerm')
-// 			await pressKey(page, 'Enter')
-// 		})
-
-// 		it('should display search results', async () => {
-// 			await waitForText(page, 'h2', 'Search Results')
-// 			await waitForText(page, 'body', 'No results were found for the query')
-// 		})
-// 	})
-
-// 	describe('Navbar Links Test', () => {
-// 		it('should navigate to homepage', async () => {
-// 			await loadUrl(page, config2.baseUrl)
-// 			await shouldExist(page, '#online_banking_features')
-// 		})
-
-// 		it('should have correct number of links', async () => {
-// 			// get count of links
-// 			const numberOfLinks = await getCount(page, '#pages-nav > li')
-// 			//assert the count
-// 			expect(numberOfLinks).to.equal(3)
-// 		})
-//   })
-  
-//   describe('Feedback Test', () => {
-//     it('should navigate to homepage', async () => {
-// 			await loadUrl(page, config2.baseUrl)
-// 			await shouldExist(page, '#online_banking_features')
-//     })
-//     it('should on click Feedback link', async () => {
-//       await click(page, "#feedback")
-//       await shouldExist(page, 'form')
-
-//     })
-
-//     it('should submit feedback form', async () => {
-//       await type(page, 'Kaniel', '#name')
-//       await type(page, 'test@test.com', '#email')
-//       await type(page, 'Just subject', '#subject')
-//       await type(page, 'comments', '#comment')
-//       await click(page, 'input[type="submit"]')
-//     })
-//     it('should display success message', async () => {
-//       await shouldExist(page, '#feedback-title')
-//       await waitForText(page, 'body', 'Thank you for your comments')
-// 		})
-		
-
-// 	})
-	
-// 	describe('Forgot password', () => {
-// 		it('should navigate to homepage', async () => {
-// 			await loadUrl(page, config2.baseUrl)
-// 			await shouldExist(page, '#online_banking_features')
-// 		})
-		
-// 		it('should load forgotten password form', async () => {
-// 			await loadUrl(page, "http://zero.webappsecurity.com/forgot-password.html")
-// 			await waitForText(page, 'h3', 'Forgotten Password')
-
-// 		})
-// 		it('should submit email', async () => {
-// 			await type(page, 'test@test.com', '#user_email')
-// 			await click(page, '.btn-primary')
-// 			await waitForText(page, 'body', 'Your password will be sent')
-// 		})
-// 	})
+})
 })
