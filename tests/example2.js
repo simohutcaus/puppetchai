@@ -59,7 +59,7 @@ describe('Reckon One Payroll', () => {
 		})
 
 		it('should login', async () => {
-			await type(page, 'stp@mailinator.com', '#username')
+			await type(page, 'username', '#username')
 			await type(page, 'password', '#password')
 			await pressKey(page, 'Enter')
 			await waitForText(page, 'body', 'Account')
@@ -136,7 +136,7 @@ await newPage.waitForSelector('#btnSaveClose')
 			await newPage.click('button#btnRightkendoDialog.button.-primary.k-button')	
 			await newPage.waitForSelector('#TaxFileNumber')
 			await delay(2000)
-			await newPage.waitForSelector('#EmployeeTax > section:nth-child(11) > ul > li:nth-child(2) > span.span-3.-last > span > span > input')
+			await newPage.waitForSelector('#EmployeeTax')
 			await delay(2000)
 			
 			//await newPage.click('#grdLeaves > div.k-header.k-grid-toolbar.k-grid-top > a')
@@ -211,4 +211,5 @@ await newPage.waitForSelector('#btnSaveClose')
 
 
 })
+
 })
