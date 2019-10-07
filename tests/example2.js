@@ -117,11 +117,16 @@ await newPage.waitForSelector('#btnSaveClose')
 
 			await newPage.waitForSelector('#EmployeeNumber')
 			await type(newPage, 'Product Manager', '#JobTitle')
+
 			//await type('input[name=WeeklyHours]', '40', {delay: 20})
 			await type(newPage, '1234', '#EmployeeNumber')
 			await delay(2000)
 			//await type(newPage, '40', '#WeeklyHours')
 			await newPage.keyboard.press('Tab')
+			await delay(2000)
+			await newPage.keyboard.press('P')
+			await delay(2000)
+			await newPage.keyboard.press('ArrowDown')
 			await newPage.keyboard.press('Tab')
 			await newPage.keyboard.press('Tab')
 			await newPage.keyboard.press('Tab')
@@ -204,6 +209,11 @@ await newPage.waitForSelector('#btnSaveClose')
 		it('should save and close the profile, saving the employee', async () => {
 			await newPage.click('#btnSaveClose')
 		})
+
+		it('should close the browser', async() => {
+			await browser.close()	
+		})
+		
 
 
 
